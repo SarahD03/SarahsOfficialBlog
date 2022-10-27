@@ -16,10 +16,10 @@ function App() {
 
   useEffect(() => {
     const apiCall = async () => {
-      let response = await axios.get('localhost:3001/favorites')
-      return response
+      let response = await axios.get('http://localhost:3001/favorite')
+      updateFavorites(response.data)
     }
-    console.log(apiCall())
+    apiCall()
   }, [])
 
   const handleChange = (event) => {
@@ -29,7 +29,7 @@ function App() {
     event.preventDefault()
     console.log(formState)
     let newFavorites = await axios
-      .post('http://localhost:3001/favorites', formState)
+      .post('http://localhost:3001/favorite', formState)
       .then((response) => {
         return response
       })
@@ -76,7 +76,14 @@ function App() {
         ></input>
         <button type="submit">Add Artist</button>
       </form>
-      <div></div>
+      <div>
+        <h3>Artist list</h3>
+        {favorites.map((fav) => (
+          <div key={fav._id}>
+            <h2>{fav.artist}</h2>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
