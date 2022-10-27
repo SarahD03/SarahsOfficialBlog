@@ -1,8 +1,9 @@
 import './App.css'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-// import { Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 // import { useNavigate } from 'react-router-dom'
+import Home from './components/Home'
 
 function App() {
   const [favorites, updateFavorites] = useState([])
@@ -28,7 +29,7 @@ function App() {
     event.preventDefault()
     console.log(formState)
     let newFavorites = await axios
-      .post('http://localhost:3001/', formState)
+      .post('http://localhost:3001/favorites', formState)
       .then((response) => {
         return response
       })
@@ -43,20 +44,36 @@ function App() {
   return (
     <div className="App">
       <header>
-        {/* <Routes>
+        <Routes>
           <Route path="/" element={<Home />}></Route>
-        </Routes> */}
+        </Routes>
       </header>
       <h1>Favorite Artist Directory</h1>
-      <form>
-        <label id="artist">Artist:</label>
-        <input></input>
-        <label id="image">Image:</label>
-        <input></input>
-        <label id="lyrics">Lyrics:</label>
-        <input></input>
-        <label id="albums"># of Albums:</label>
-        <input></input>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="artist">Artist:</label>
+        <input
+          id="artist"
+          value={formState.artist}
+          onChange={handleChange}
+        ></input>
+        <label htmlFor="image">Image:</label>
+        <input
+          id="image"
+          value={formState.image}
+          onChange={handleChange}
+        ></input>
+        <label htmlFor="lyrics">Lyrics:</label>
+        <input
+          id="lyrics"
+          value={formState.lyrics}
+          onChange={handleChange}
+        ></input>
+        <label htmlFor="albums"># of Albums:</label>
+        <input
+          id="albums"
+          value={formState.albums}
+          onChange={handleChange}
+        ></input>
         <button type="submit">Add Artist</button>
       </form>
       <div></div>
