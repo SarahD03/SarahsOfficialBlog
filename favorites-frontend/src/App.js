@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 // import { useNavigate } from 'react-router-dom'
 import Home from './components/Home'
-import ArtistForm from './components/ArtistForm'
+import Nav from './components/Nav'
+import UserComments from './components/UserComments'
 
 function App() {
   const [favorites, updateFavorites] = useState([])
@@ -29,6 +30,7 @@ function App() {
   const handleSubmit = async (event) => {
     event.preventDefault()
     console.log(formState)
+    console.log('this funtion has been fired')
     let newFavorites = await axios
       .post('http://localhost:3001/favorite', formState)
       .then((response) => {
@@ -39,20 +41,20 @@ function App() {
       })
     updateFavorites([...favorites, newFavorites.data])
     setFormState({ artist: '', image: '', lyrics: '', albums: '' })
-    console.log(newFavorites.data)
+    console.log(newFavorites)
   }
 
   return (
     <div className="App">
       <header>
         <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/ArtistForm" element={<ArtistForm />}></Route>
+          <Route path="" element={<Nav />}></Route>
+          <Route path="/comments" element={<UserComments />}></Route>
         </Routes>
       </header>
       <div className="form">
         <h1>Favorite Artist Directory</h1>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="inputs">
           <label htmlFor="artist">Artist:</label>
           <input
             id="artist"
@@ -80,7 +82,7 @@ function App() {
           <button type="submit">Add Artist</button>
         </form>
         <div>
-          <h3>Artist list</h3>
+          <h3 className="subtitle">Artist list</h3>
           {favorites.map((fav) => (
             <div key={fav._id}>
               <h2>{fav.artist}</h2>
@@ -88,6 +90,9 @@ function App() {
           ))}
         </div>
       </div>
+      <section className="update">
+        <h2>Update Artists</h2>
+      </section>
     </div>
   )
 }

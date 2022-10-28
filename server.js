@@ -26,7 +26,7 @@ app.post('/favorite', async (req, res) => {
   res.json(createdFavorite)
 })
 
-app.put('/favorite/:id', async (req, res) => {
+app.put('/favorite', async (req, res) => {
   let updatedArtist = await Favorite.findByIdAndUpdate(
     req.params.id,
     req.body,
@@ -34,5 +34,18 @@ app.put('/favorite/:id', async (req, res) => {
     res.json(updatedArtist)
   )
 })
+app.delete('favorite/:id', async (req, res) => {
+  let deletedFavorite = await Favorite.findByIdAndDelete(req.params.id)
+  res.json(deletedFavorite)
+})
 
+app.get('/comment', async (req, res) => {
+  let allComments = await Comment.find({})
+  res.json(allComments)
+})
+
+app.post('/comment', async (req, res) => {
+  let createdComment = await Comment.create(req.body)
+  res.json(createdComment)
+})
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`))
