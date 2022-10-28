@@ -26,4 +26,13 @@ app.post('/favorite', async (req, res) => {
   res.json(createdFavorite)
 })
 
+app.put('/favorite/:id', async (req, res) => {
+  let updatedArtist = await Favorite.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    { new: true },
+    res.json(updatedArtist)
+  )
+})
+
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`))
