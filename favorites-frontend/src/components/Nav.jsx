@@ -13,6 +13,8 @@ const Nav = () => {
 
                 <Link to='/comments'>Comments</Link>
 
+                <Link to= '/list'>Artists</Link>
+
             </div>
         </nav>
     )

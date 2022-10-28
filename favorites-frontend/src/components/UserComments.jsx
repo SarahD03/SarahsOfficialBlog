@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { useState } from 'react'
 import axios from "axios";
 
 const UserComments = (props) => {
-const [comments, updateComments] = useState
+const [comments, updateComments] = useState([])
     const [formState, setFormState] = useState({
       title: '',
       name: '',
