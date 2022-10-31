@@ -34,7 +34,7 @@ app.put('/favorite', async (req, res) => {
     res.json(updatedArtist)
   )
 })
-app.delete('favorite/:id', async (req, res) => {
+app.delete('/favorite/:id', async (req, res) => {
   let deletedFavorite = await Favorite.findByIdAndDelete(req.params.id)
   res.json(deletedFavorite)
 })
