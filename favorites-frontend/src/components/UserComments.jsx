@@ -44,6 +44,15 @@ const handleChange = (event) => {
             <input id='body'value={formState.body} onChange={handleChange}></input>
             <button type="submit">Post Comment</button>
             </form>
+            <div className='comments'>
+            {comments.map((comment) => (
+              <div key={comment._id}>
+                <h2>{comment.title}</h2>
+                <h4>by: {comment.name}</h4>
+                <h3>{comment.body}</h3>
+              </div>    
+            ))}
+            </div>
         </div>
     )
 }

@@ -1,12 +1,13 @@
 import './App.css'
-import axios from 'axios'
-import { useEffect, useState } from 'react'
+// import axios from 'axios'
+// import { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 // import { useNavigate } from 'react-router-dom'
 import Home from './components/Home'
 import Nav from './components/Nav'
 import UserComments from './components/UserComments'
 import ArtistForm from './components/ArtistForm'
+import ArtistList from './components/ArtistList'
 
 function App() {
   // const [favorites, updateFavorites] = useState([])
@@ -52,8 +53,9 @@ function App() {
       </header>
       <Routes>
         <Route path="comments" element={<UserComments />}></Route>
-        <Route path="form" element={<ArtistForm />}></Route>
+        <Route path="form/*" element={<ArtistForm />}></Route>
         <Route path="/" element={<Home />}></Route>
+        <Route path="list" element={<ArtistList />}></Route>
       </Routes>
       {/* <main>
         <div className="form">

@@ -1,7 +1,8 @@
 // import { Link } from "react-router-dom"
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-// import { Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
+import ArtistList from './ArtistList'
 
 const ArtistForm = () => {
     const [favorites, updateFavorites] = useState([])
@@ -82,6 +83,12 @@ const ArtistForm = () => {
             </div>
           ))}
         </div>
+        <Routes>
+        <Route
+          path="list"
+          element={<ArtistList favorites={favorites} />}
+        ></Route>
+        </Routes>
       </div>
      
     )

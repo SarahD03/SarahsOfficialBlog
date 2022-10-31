@@ -48,4 +48,10 @@ app.post('/comment', async (req, res) => {
   let createdComment = await Comment.create(req.body)
   res.json(createdComment)
 })
+
+app.delete('/comment', async (req, res) => {
+  let deletedComment = await Comment.findByIdAndDelete(req.params.id)
+  res.json(deletedComment)
+})
+
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`))

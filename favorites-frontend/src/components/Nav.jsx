@@ -2,8 +2,10 @@ import { Link } from "react-router-dom";
 
 const Nav = () => {
     return (
+        <div>
+             <h3 className="title">Directory</h3>
         <nav className="navbar">
-            <h3>Directory</h3>
+     
             <div>
                 <Link to='/'>Home</Link>
 
@@ -17,6 +19,7 @@ const Nav = () => {
 
             </div>
         </nav>
+        </div>
     )
 }
 export default Nav

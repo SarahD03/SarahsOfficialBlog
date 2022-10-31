@@ -78,8 +78,8 @@ button {
 
 .navbar {
   justify-content: space-between;
-  background-color: rgb(238, 198, 249);
-  display: flex;
+
+
   
 }
 
@@ -94,5 +94,19 @@ button {
 .navbar h3 {
   font-size: 30px;
   padding-left: 50px;
+
+}
+
+.title {
+  padding-top: 20px;
+  font-size: 40px;
+}
+
+html {
+  background-color: #e7b4ef;
+}
+
+.comments {
+  border: 2px solid;
 
 }
