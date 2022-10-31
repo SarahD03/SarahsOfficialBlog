@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import ArtistList from './ArtistList'
+import { useNavigate } from 'react-router-dom'
 
 const ArtistForm = () => {
     const [favorites, updateFavorites] = useState([])
@@ -42,7 +43,13 @@ const ArtistForm = () => {
   }
 
 
+let navigate = useNavigate()
 
+  const getArtist = (id) => {
+    navigate(`favorite/${id}`)
+    console.log(id)
+    alert('get id: ' + id)
+}
 
 
     return (
@@ -79,7 +86,7 @@ const ArtistForm = () => {
           <h3 className="subtitle">Artist list</h3>
           {favorites.map((fav) => (
             <div key={fav._id}>
-              <h2>{fav.artist}</h2>
+              <h2 onClick={() => {getArtist(fav._id)}}>{fav.artist}</h2>
             </div>
           ))}
         </div>
@@ -89,6 +96,7 @@ const ArtistForm = () => {
           element={<ArtistList favorites={favorites} />}
         ></Route>
         </Routes>
+
       </div>
      
     )
