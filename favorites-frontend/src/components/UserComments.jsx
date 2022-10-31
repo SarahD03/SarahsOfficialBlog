@@ -1,5 +1,5 @@
 // import { Link } from "react-router-dom";
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import axios from "axios";
 
 const UserComments = (props) => {
@@ -9,6 +9,14 @@ const [comments, updateComments] = useState([])
       name: '',
       body: ''
     })
+
+    useEffect(() => {
+      const apiCall = async () => {
+        let response = await axios.get('http://localhost:3001/comment')
+        updateComments(response.data)
+      }
+      apiCall()
+    }, [])
 
 const handleChange = (event) => {
         setFormState({ ...formState, [event.target.id]: event.target.value })
