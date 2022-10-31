@@ -2,6 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const PORT = process.env.PORT || 3001
 const db = require('./db')
+const routes = require('./favorites-frontend/routes')
 const { Favorite, Comment } = require('./favorites-frontend/src/models')
 
 const app = express()
@@ -14,7 +15,9 @@ app.get('/', (req, res) => {
   res.send({ msg: 'This route is being hit!!!' })
 })
 ///crud goes below here
+// app.use('/api', routes)
 
+// db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 // favorite routes
 app.get('/favorite', async (req, res) => {
   let allFavorites = await Favorite.find({})

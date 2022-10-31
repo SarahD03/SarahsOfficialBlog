@@ -1,9 +1,5 @@
-const { Router } = require('express')
-const { Favorite } = require('../favorites-frontend/src/models')
-const { Comment } = require('./favorites-frontend/src/models')
-const router = Router()
-
-router.get('/', (req, res) => res.send('This is a root!!!'))
+const Favorite = require('../src/models/favorite')
+const Comment = require('../src/models/comment')
 
 const deleteArtist = async (req, res) => {
   try {
@@ -29,4 +25,4 @@ const updateArtist = async (req, res) => {
   }
 }
 
-module.exports = { router, updateArtist, deleteArtist }
+module.exports = { updateArtist, deleteArtist }
