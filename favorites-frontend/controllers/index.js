@@ -1,5 +1,13 @@
-const Favorite = require('../src/models/favorite')
-const Comment = require('../src/models/comment')
+const { Favorite } = require('../src/models')
+
+const getAllArtist = async (req, res) => {
+  try {
+    const artists = await Favorite.find()
+    return res.status(200).json({ artists })
+  } catch (error) {
+    return res.status(500).send(error.message)
+  }
+}
 
 const deleteArtist = async (req, res) => {
   try {
@@ -25,4 +33,16 @@ const updateArtist = async (req, res) => {
   }
 }
 
-module.exports = { updateArtist, deleteArtist }
+const createArtist = async (req, res) => {
+  try {
+    const artist = await new Favorite(req.body)
+    await artist.save()
+    return res.status(201).json({
+      artist
+    })
+  } catch (error) {
+    return res.status(500).json({ error: error.message })
+  }
+}
+
+module.exports = { updateArtist, deleteArtist, createArtist, getAllArtist }
