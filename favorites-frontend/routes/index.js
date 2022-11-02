@@ -8,6 +8,8 @@ router.put('/form', controllers.updateArtist)
 
 router.delete('/form/:id', controllers.deleteArtist)
 
-router.post('/form/:id')
+router.post('/form/:id', controllers.updateArtist)
+
+router.get('/form', controllers.getAllArtist)
 
 module.exports = { router }

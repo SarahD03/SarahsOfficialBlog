@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import ArtistList from './ArtistList'
 import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const ArtistForm = () => {
     const [favorites, updateFavorites] = useState([])
@@ -85,11 +86,13 @@ let navigate = useNavigate()
         <div>
           <h3 className="subtitle">Artist list</h3>
           {favorites.map((fav) => (
+            <Link to={`/favorites/${fav._id}`}>
             <div key={fav._id}>
-              <h2 onClick={() => {getArtist(fav._id)}}>{fav.artist}</h2>
+              <h2>{fav.artist}</h2>
             </div>
+          </Link>
           ))}
-        </div>
+      </div> 
         <Routes>
         <Route
           path="list"
