@@ -1,7 +1,6 @@
-import { Link } from 'react-router-dom'
-import ArtistForm from './ArtistForm'
+import React from 'react'
 
-const Artist = () => {
+const Artist = (props) => {
   return (
     <div>
       <h3>...</h3>

@@ -17,8 +17,8 @@ function App() {
         <Nav />
       </header>
       <Routes>
-        <Route path="comments" element={<UserComments />}></Route>
-        <Route path="form/*" element={<ArtistForm />}></Route>
+        <Route path="/comment" element={<UserComments />}></Route>
+        <Route path="form" element={<ArtistForm />}></Route>
         <Route path="/" element={<Home />}></Route>
         <Route path="list" element={<ArtistList />}></Route>
         <Route path="favorite/:id" element={<Artist />}></Route>

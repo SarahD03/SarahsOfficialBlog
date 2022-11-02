@@ -1,4 +1,5 @@
 const { Favorite } = require('../src/models')
+const { Comment } = require('../src/models')
 
 const getAllArtist = async (req, res) => {
   try {

@@ -1,18 +1,11 @@
-import { useNavigate } from "react-router-dom"
-// import ArtistForm from "./ArtistForm"
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 
 
-const ArtistList = (props) => {
+
+const ArtistList = () => {
 
     const [favorites, updateFavorites] = useState([])
-    const [formState, setFormState] = useState({
-      artist: '',
-      image: '',
-      lyrics: '',
-      albums: ''
-    })
   
     useEffect(() => {
       const apiCall = async () => {
@@ -22,41 +15,7 @@ const ArtistList = (props) => {
       apiCall()
     }, [])
   
-    // const handleChange = (event) => {
-    //   setFormState({ ...formState, [event.target.id]: event.target.value })
-    // }
-    // const handleDelete = async (id, event) => {
-    //   event.preventDefault()
-    //   console.log(formState)
-    //   console.log('this funtion has been fired')
-    //   let deletedFav = await axios
-    //     .delete(`http://localhost:3001/list?${id}`, formState)
-    //     .then((response) => {
-    //       return response
-    //     })
-    //     .catch((error) => {
-    //       console.log(error)
-    //     })
-    //   updateFavorites([...favorites, deletedFav.data])
-    //   setFormState({ artist: '', image: '', lyrics: '', albums: '' })
-    //   console.log(deletedFav)
-    // }
-  
-// const handleDelete = (id, e ) => {
-//     e.preventDefault() 
-//     axios.delete(`http://localhost:3001/list${id}`)
-//         const newList = favorites.filter((fav) => fav.id !== id)
-//     updateFavorites({...favorites, newList})
-//     console.log(favorites)
-// }
-let navigate = useNavigate()
 
-  const handleDelete = (id) => {
-    navigate(`/list?${id}`)
-    axios.delete(`http://localhost:3001/list?${id}`)
-    console.log(id)
-
-}
 
 
     return(
@@ -73,7 +32,7 @@ let navigate = useNavigate()
             ))}
             <div className='delete-form'>
                 <h2>Delete Artist</h2>
-                <form onSubmit={handleDelete}>
+                <form>
                     <label>Artist Id</label>
                     <input type="delete" />
                     <button type="submit" >Delete Artist?</button>

@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 import axios from "axios";
 
-const UserComments = (props) => {
+const UserComments = () => {
 const [comments, updateComments] = useState([])
     const [formState, setFormState] = useState({
       title: '',

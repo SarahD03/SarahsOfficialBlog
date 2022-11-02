@@ -10,12 +10,12 @@ const Nav = () => {
                 <Link to='/'>Home</Link>
 
 
-                <Link to='/form'>Form</Link>
+                <Link to='form'>Form</Link>
 
 
-                <Link to='/comments'>Comments</Link>
+                <Link to='/comment'>Comments</Link>
 
-                <Link to= '/list'>Artists</Link>
+                <Link to= 'list'>Artists</Link>
 
             </div>
         </nav>

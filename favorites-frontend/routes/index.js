@@ -4,20 +4,20 @@ const router = Router()
 
 router.get('/', (req, res) => res.send('This is a root!!!'))
 
-router.put('/form', controllers.updateArtist)
+router.post('/favorite', controllers.createArtist)
 
-router.delete('/form/:id', controllers.deleteArtist)
+router.delete('/favorite/:id', controllers.deleteArtist)
 
-router.post('/form/:id', controllers.updateArtist)
+router.put('/favorite/:id', controllers.updateArtist)
 
-router.get('/form', controllers.getAllArtist)
+router.get('/favorite', controllers.getAllArtist)
 
-router.post('/comments/:id', controllers.createComment)
+router.post('/comment/:id', controllers.createComment)
 
-router.get('/comments', controllers.getAllComments)
+router.get('/comment', controllers.getAllComments)
 
-router.put('/comments', controllers.updateComment)
+router.put('/comment', controllers.updateComment)
 
-router.delete('/comments/:id', controllers.deleteComment)
+router.delete('/comment/:id', controllers.deleteComment)
 
-module.exports = { router }
+module.exports = router
