@@ -12,4 +12,12 @@ router.post('/form/:id', controllers.updateArtist)
 
 router.get('/form', controllers.getAllArtist)
 
+router.post('/comments/:id', controllers.createComment)
+
+router.get('/comments', controllers.getAllComments)
+
+router.put('/comments', controllers.updateComment)
+
+router.delete('/comments/:id', controllers.deleteComment)
+
 module.exports = { router }
