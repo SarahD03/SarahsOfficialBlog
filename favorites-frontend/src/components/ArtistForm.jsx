@@ -3,8 +3,11 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import ArtistList from './ArtistList'
-import { useNavigate } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import Artist from './Artist'
+
+const Home = '/'
 
 const ArtistForm = () => {
     const [favorites, updateFavorites] = useState([])
@@ -43,14 +46,22 @@ const ArtistForm = () => {
     console.log(newFavorites)
   }
 
+  let { id } = useParams()
+ 
+  const [selectedArtist, setSelectedArtist] = useState()
 
-let navigate = useNavigate()
+  useEffect(() => {
+    const apiCall = async () => {
+      const response = await axios.get(`${Home}favorite/${id}`)
+      console.log(response)
+      setSelectedArtist(response.data)
+      console.log(`Artist: ${response}`)
+    }
+    apiCall()
+  }, [])
 
-  const getArtist = (id) => {
-    navigate(`favorite/${id}`)
-    console.log(id)
-    alert('get id: ' + id)
-}
+
+
 
 
     return (
@@ -86,20 +97,18 @@ let navigate = useNavigate()
         <div>
           <h3 className="subtitle">Artist list</h3>
           {favorites.map((fav) => (
-            <Link to={`/favorites/${fav._id}`}>
+            <Link to={`/favorite/${fav._id}`}>
             <div key={fav._id}>
               <h2>{fav.artist}</h2>
+              {selectedArtist && <Artist key={fav._id} artist={fav.artist} image={fav.image} lyrics={fav.lyrics} albums={fav.albums} fav={selectedArtist}/>}
             </div>
+            {/* <Artist name={fav.artist}
+            image={fav.image} lyrics={fav.lyrics} albums={fav.albums}
+            /> */}
+           
           </Link>
           ))}
       </div> 
-        <Routes>
-        <Route
-          path="list"
-          element={<ArtistList favorites={favorites} />}
-        ></Route>
-        </Routes>
-
       </div>
      
     )
